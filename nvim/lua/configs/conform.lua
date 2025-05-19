@@ -4,7 +4,7 @@ local options = {
     css = { "prettier" },
     html = { "prettier" },
     python = { "black" },
-    java = { "prettier" },
+    java = { "google-java-format" },
   },
 
   format_on_save = {

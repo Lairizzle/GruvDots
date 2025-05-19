@@ -13,6 +13,8 @@ return {
     end,
   },
 
+  { "mfussenegger/nvim-jdtls" },
+
   -- test new blink
   -- { import = "nvchad.blink.lazyspec" },
 
