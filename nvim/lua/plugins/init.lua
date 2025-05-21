@@ -28,6 +28,7 @@ return {
         "html",
         "css",
         "python",
+        "java",
       },
     },
   },
