@@ -15,9 +15,9 @@ M.base46 = {
 }
 
 M.ui = {
-  telescope = {
-    style = "bordered",
-  },
+  --telescope = {
+  --style = "bordered",
+  --},
 }
 
 -- M.nvdash = { load_on_startup = true }

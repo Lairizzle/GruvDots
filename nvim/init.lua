@@ -35,3 +35,20 @@ require "nvchad.autocmds"
 vim.schedule(function()
   require "mappings"
 end)
+
+vim.api.nvim_set_hl(0, "FloatBorder", { bg = "NONE", fg = "NONE" })
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "NONE" })
+
+-- Only override once to avoid "duplicate field" errors
+if not vim.g._custom_lsp_border_applied then
+  local _open_floating_preview = vim.lsp.util.open_floating_preview
+
+  ---@diagnostic disable-next-line: duplicate-set-field
+  function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+    opts = opts or {}
+    opts.border = opts.border or "single"
+    return _open_floating_preview(contents, syntax, opts, ...)
+  end
+
+  vim.g._custom_lsp_border_applied = true
+end
