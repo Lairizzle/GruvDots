@@ -5,3 +5,4 @@
 vim.keymap.set({ "n", "v" }, "<tab>", ":BufferLineCycleNext<CR>")
 
 vim.keymap.set("i", "jk", "<ESC>")
+vim.keymap.set("t", "<leader>t", [[<C-\><C-n>]], { noremap = true })
