@@ -3,19 +3,7 @@ return {
   config = false,
   setup = {
     jdtls = function()
-      -- Your nvim-java configuration goes here
-      require("java").setup({
-        -- root_markers = {
-        --   "settings.gradle",
-        --   "settings.gradle.kts",
-        --   "pom.xml",
-        --   "build.gradle",
-        --   "mvnw",
-        --   "gradlew",
-        --   "build.gradle",
-        --   "build.gradle.kts",
-        -- },
-      })
+      require("java").setup({})
     end,
   },
   dependencies = {
@@ -33,18 +21,6 @@ return {
                 -- disable progress updates.
               end,
             },
-            -- settings = {
-            --   java = {
-            --     configuration = {
-            --       runtimes = {
-            --         {
-            --           name = "JavaSE-23",
-            --           path = "/usr/local/sdkman/candidates/java/23-tem",
-            --         },
-            --       },
-            --     },
-            --   },
-            -- },
           },
         },
       },
