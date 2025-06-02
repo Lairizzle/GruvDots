@@ -1,4 +1,4 @@
-#Keith Henderson's Neovim Config
+# Keith Henderson's Neovim Config
 
 ## Introduction
 
@@ -14,7 +14,7 @@ The config was built using kickstart.nvim as a base:
 
 kickstart.nvim is **NOT** a Neovim distribution, but instead a starting point for your configuration.
 
-##Download kickstart.nvim
+## Download kickstart.nvim
 [Download kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim)
 
 
