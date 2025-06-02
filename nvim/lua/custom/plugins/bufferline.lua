@@ -23,7 +23,7 @@ return {
             text_align = 'center',
             highlight = 'Directory',
             separator = true,
-            padding = 1,
+            padding = 0,
           },
           {
             filetype = 'undotree',
