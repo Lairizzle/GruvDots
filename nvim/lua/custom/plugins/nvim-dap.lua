@@ -15,6 +15,7 @@ return {
       require('dapui').setup()
       --require('dap-go').setup()
 
+      --config for C++
       dap.adapters.codelldb = {
         type = 'server',
         port = '${port}',
@@ -39,6 +40,21 @@ return {
 
           -- 💡 Optional: for showing disassembly if no source is available
           runInTerminal = false,
+        },
+      }
+
+      --Config for Java
+      dap.configurations.java = {
+        {
+          type = 'java',
+          request = 'launch',
+          name = 'Launch Java Program',
+          mainClass = function()
+            return vim.fn.input('Main Class > ', '', 'file')
+          end,
+          projectName = function()
+            return vim.fn.input 'Project Name > '
+          end,
         },
       }
 

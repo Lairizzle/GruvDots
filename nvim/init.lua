@@ -93,6 +93,10 @@ vim.g.maplocalleader = ' '
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = false
 
+-- Adjust background overlap of borders
+vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'NONE', fg = 'NONE' })
+vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'NONE' })
+
 -- [[ Setting options ]]
 -- See `:help vim.o`
 -- NOTE: You can change these options as you wish!
@@ -153,8 +157,8 @@ vim.o.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 --Set tab width
-vim.opt['tabstop'] = 4
-vim.opt['shiftwidth'] = 4
+vim.opt['tabstop'] = 2
+vim.opt['shiftwidth'] = 2
 
 -- Preview substitutions live, as you type!
 vim.o.inccommand = 'split'
@@ -179,6 +183,12 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- Set keymap to quickly leave insert mode
 vim.keymap.set('i', 'jk', '<ESC>')
+
+-- Set Code Actions
+vim.api.nvim_set_keymap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', { noremap = true, silent = true })
+
+--Jrun
+vim.api.nvim_set_keymap('n', '<leader>jr', ":lua require('java_runner').run_java()<CR>", { noremap = true, silent = true })
 
 --Set keymap to tab through buffers
 vim.keymap.set({ 'n', 'v' }, '<tab>', ':BufferLineCycleNext<CR>')
@@ -742,6 +752,7 @@ require('lazy').setup({
       require('mason-lspconfig').setup {
         ensure_installed = {}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
         automatic_installation = false,
+        automatic_enable = { exclude = { 'jdtls' } },
         handlers = {
           function(server_name)
             local server = servers[server_name] or {}
@@ -789,6 +800,7 @@ require('lazy').setup({
       formatters_by_ft = {
         lua = { 'stylua' },
         cpp = { 'clang-format' },
+        java = { 'google-java-format' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
@@ -856,7 +868,7 @@ require('lazy').setup({
         -- <c-k>: Toggle signature help
         --
         -- See :h blink-cmp-config-keymap for defining your own keymap
-        preset = 'default',
+        preset = 'enter',
 
         -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
         --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
@@ -871,7 +883,18 @@ require('lazy').setup({
       completion = {
         -- By default, you may press `<c-space>` to show the documentation.
         -- Optionally, set `auto_show = true` to show the documentation after a delay.
-        documentation = { auto_show = false, auto_show_delay_ms = 500 },
+        menu = {
+          border = 'rounded',
+          winhighlight = 'Normal:Normal,FloatBorder:FloatBorder,CursorLine:BlinkCmpMenuSelection,Search:None',
+        },
+        documentation = {
+          window = {
+            border = 'rounded',
+            winhighlight = 'Normal:Normal,FloatBorder:FloatBorder,CursorLine:BlinkCmpDocCursorLine,Search:None',
+          },
+          auto_show = true,
+          auto_show_delay_ms = 500,
+        },
       },
 
       sources = {
@@ -965,7 +988,7 @@ require('lazy').setup({
     main = 'nvim-treesitter.configs', -- Sets main module to use for opts
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     opts = {
-      ensure_installed = { 'bash', 'c', 'cpp', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
+      ensure_installed = { 'bash', 'c', 'cpp', 'diff', 'html', 'java', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
