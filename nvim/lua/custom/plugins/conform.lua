@@ -32,7 +32,7 @@ return { -- Autoformat
       lua = { 'stylua' },
       cpp = { 'clang-format' },
       java = { 'google-java-format' },
-      py = { 'black' },
+      python = { 'black' },
     },
   },
 }
