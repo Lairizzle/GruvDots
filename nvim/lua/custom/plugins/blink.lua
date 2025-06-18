@@ -66,7 +66,7 @@ return { -- Autocompletion
           border = 'rounded',
           winhighlight = 'Normal:Normal,FloatBorder:FloatBorder,CursorLine:BlinkCmpDocCursorLine,Search:None',
         },
-        auto_show = false,
+        auto_show = true,
         auto_show_delay_ms = 500,
       },
     },
@@ -87,6 +87,13 @@ return { -- Autocompletion
     fuzzy = { implementation = 'lua' },
 
     -- Shows a signature help window while you type arguments for a function
-    signature = { enabled = true },
+    signature = {
+      window = {
+        border = 'rounded',
+        winhighlight = 'Normal:Normal,FloatBorder:FloatBorder,CursorLine:BlinkCmpDocCursorLine,Search:None',
+        treesitter_highlighting = true,
+        show_documentation = true,
+      },
+    },
   },
 }

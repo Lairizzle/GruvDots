@@ -24,6 +24,12 @@ return {
         opts = { skip = true },
       },
     },
+    lsp = {
+      signature = {
+        enabled = false, -- <- this fully disables LSP signature popups from noice
+        auto_open = { enabled = false },
+      },
+    },
     -- add any options here
     presets = {
       lsp_doc_border = true,
