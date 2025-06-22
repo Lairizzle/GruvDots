@@ -14,8 +14,9 @@ vim.g.have_nerd_font = true
 
 --[[ FLOATING WINDOW OPTIONS ]]
 -- Adjust background overlap of borders
+vim.o.winborder = 'none'
 vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'NONE', fg = 'NONE' })
-vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'NONE' })
+vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'NONE', fg = 'NONE' })
 
 -- [[ OPTIONS ]]
 -- See `:help vim.o`
